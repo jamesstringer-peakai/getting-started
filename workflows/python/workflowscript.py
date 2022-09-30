@@ -1,12 +1,14 @@
 # First import the packages that will be needed  
-from snowflake.connector.pandas_tools import write_pandas
-import snowflake.connector
-import pandas as pd
-from sklearn.linear_model import LinearRegression
 import boto3
 import pickle
 import os
 import tempfile
+import snowflake.connector
+
+import pandas as pd
+
+from snowflake.connector.pandas_tools import write_pandas
+from sklearn.linear_model import LinearRegression
 
 # Set some variables up to use them later
 bucket = os.environ['DATA_LAKE'] # For the data lake connection
