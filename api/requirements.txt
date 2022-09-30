@@ -1,0 +1,11 @@
+flask
+gunicorn
+locust
+black
+isort
+pytest
+pandas
+boto3
+sklearn
+snowflake
+snowflake-connector-python[pandas]
