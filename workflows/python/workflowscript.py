@@ -45,12 +45,12 @@ select * from STAGE.HOUSEPRICES
 conn = connect_to_db()
 df = read_from_db(conn, query)
 
-###
+"""
 Pre process our data. Here we are:
 - removing the prices that are below zero
 - removing categorical variables
 You can change this script if you want to remove some more values
-###
+"""
 
 print("Pre-processing data")
 df = df[df['price'] > 0]
