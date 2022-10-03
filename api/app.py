@@ -2,11 +2,8 @@
 import pickle
 import boto3
 import os
-import snowflake.connector
-
 import pandas as pd
 
-from snowflake.connector.pandas_tools import write_pandas
 from flask import Flask, Response, jsonify, request
 
 # Declare your applications

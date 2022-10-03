@@ -7,5 +7,3 @@ pytest
 pandas
 boto3
 sklearn
-snowflake
-snowflake-connector-python[pandas]

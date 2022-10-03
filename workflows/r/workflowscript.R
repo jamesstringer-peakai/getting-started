@@ -21,17 +21,14 @@ conn = dbConnect(odbc::odbc(),
 
 # Query the raw data and filter out house prices 
 print("Get data and filter price")
-df = dbGetQuery(conn, "select * from STAGE.HOUSEPRICES") %>%
+df = dbGetQuery(conn, "select * from STAGE.HOUSE_PRICES") %>%
   filter(price > 0)
 
 # Removing categorical variables
 print("Only select numerical data")
 data = df %>%
   select(-date,
-         -street, 
-         -city, 
-         -statezip,
-         -country, 
+         -city,
          -PEAKAUDITCREATEDAT, 
          -REQUEST_ID)
 
@@ -47,7 +44,7 @@ linreg_reg_fit <- linreg_reg_spec %>% fit(price ~ ., data = data)
 predictions = df %>%
   add_column(predict(linreg_reg_fit, data))  
 
-names(predictions)[21] <- 'predictions'
+names(predictions)[18] <- 'predictions'
 
 # Save the model to the data lake using the AWS CLI functionality
 print("Save model to S3")
@@ -86,10 +83,7 @@ date varchar(256),
   sqftbasement integer,
   yrbuilt integer,
   yrrenovated integer,
-  street varchar(256),
   city varchar(256),
-  statezip varchar(256),
-  country varchar(256),
   predictions integer    
 )
 
