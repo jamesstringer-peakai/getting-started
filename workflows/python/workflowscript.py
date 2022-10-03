@@ -40,7 +40,7 @@ print("Querying Snowflake data")
 
 # Query to get all of our raw data from STAGE
 query = """
-select * from STAGE.HOUSEPRICES
+select * from STAGE.HOUSE_PRICES
 """
 conn = connect_to_db()
 df = read_from_db(conn, query)
@@ -56,10 +56,7 @@ print("Pre-processing data")
 df = df[df['price'] > 0]
 
 data = df.drop(['date',
-                'street', 
-                'city', 
-                'statezip',
-                'country', 
+                'city',
                 'PEAKAUDITCREATEDAT', 
                 'REQUEST_ID'], axis=1)
 
@@ -103,11 +100,8 @@ date varchar(256),
   sqftbasement integer,
   yrbuilt integer,
   yrrenovated integer,
-  street varchar(256),
   city varchar(256),
-  statezip varchar(256),
-  country varchar(256),
-  predictions integer    
+  predictions integer
 )
 """
 

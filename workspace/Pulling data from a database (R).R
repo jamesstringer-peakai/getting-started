@@ -12,4 +12,4 @@ library(tidyverse)
 conn <- dbConnect(odbc(), paste0(Sys.getenv('TENANT') , '-' , Sys.getenv('STAGE')))
 
 # Pull the data from Snowflake into a Workspace
-df <- dbGetQuery(conn, “select * from STAGE.HOUSEPRICES”)
+df <- dbGetQuery(conn, “select * from STAGE.HOUSE_PRICES”)

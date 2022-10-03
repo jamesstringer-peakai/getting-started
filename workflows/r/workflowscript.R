@@ -21,17 +21,14 @@ conn = dbConnect(odbc::odbc(),
 
 # Query the raw data and filter out house prices 
 print("Get data and filter price")
-df = dbGetQuery(conn, "select * from STAGE.HOUSEPRICES") %>%
+df = dbGetQuery(conn, "select * from STAGE.HOUSE_PRICES") %>%
   filter(price > 0)
 
 # Removing categorical variables
 print("Only select numerical data")
 data = df %>%
   select(-date,
-         -street, 
-         -city, 
-         -statezip,
-         -country, 
+         -city,
          -PEAKAUDITCREATEDAT, 
          -REQUEST_ID)
 
@@ -86,10 +83,7 @@ date varchar(256),
   sqftbasement integer,
   yrbuilt integer,
   yrrenovated integer,
-  street varchar(256),
   city varchar(256),
-  statezip varchar(256),
-  country varchar(256),
   predictions integer    
 )
 
