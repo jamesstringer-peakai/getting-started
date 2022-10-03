@@ -44,7 +44,7 @@ linreg_reg_fit <- linreg_reg_spec %>% fit(price ~ ., data = data)
 predictions = df %>%
   add_column(predict(linreg_reg_fit, data))  
 
-names(predictions)[21] <- 'predictions'
+names(predictions)[18] <- 'predictions'
 
 # Save the model to the data lake using the AWS CLI functionality
 print("Save model to S3")
